@@ -1,0 +1,15 @@
+sudo: false
+language: python
+python:
+  - "3.7"
+install:
+  - pip install -e .
+  - pip install tox-travis
+  - pip install coverage
+  - pip install coveralls
+script:
+  - tox
+  - coverage run --source src -m py.test
+  - coverage report -m
+after_success:
+  - coveralls
