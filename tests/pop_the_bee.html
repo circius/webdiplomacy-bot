@@ -1,0 +1,347 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+		<html xmlns="http://www.w3.org/1999/xhtml" xmlns:fb="http://www.facebook.com/2008/fbml">
+		<head>
+		<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+			<meta http-equiv="Content-Style-Type" content="text/css" />
+			<meta name="robots" content="index,follow" />
+			<meta name="description" content="webDiplomacy is an online, multiplayer, turn-based strategy game that lets you play Diplomacy online." />
+			<meta name="keywords" content="diplomacy,diplomacy game,online diplomacy,classic diplomacy,web diplomacy,diplomacy board game,play diplomacy,php diplomacy" />
+			<link rel="shortcut icon" href="favicon.ico" />
+			<link rel="icon" href="favicon.ico" />
+			<link rel="manifest" href="/manifest.webmanifest">
+			<script type="text/javascript" src="useroptions.php"></script>
+			<script type="text/javascript" src="javascript/clickhandler.js"></script>
+			<script type="text/javascript" src="contrib/js/prototype.js"></script>
+			<script type="text/javascript" src="contrib/js/scriptaculous.js"></script>
+			<link rel="stylesheet" type="text/css" href="contrib/js/pushup/src/css/pushup.css" />
+			<script type="text/javascript" src="contrib/js/pushup/src/js/pushup.js"></script>
+			<script type="text/javascript">
+				STATICSRV="";
+				var cssDirectory = "css";
+					var cssVersion = "1.34";
+			</script>
+
+			<link rel="stylesheet" id="global-css" href="css/global.css?ver=1.34" type="text/css" />
+			<link rel="stylesheet" id="game-panel-css" href="css/gamepanel.css?ver=1.34" type="text/css" />
+			<link rel="stylesheet" id="home-css" href="css/home.css?ver=1.34" type="text/css" />
+			<link rel="stylesheet" href="variants/Classic/resources/style.css?var=1.34" type="text/css" />
+<link rel="stylesheet" href="variants/World/resources/style.css?var=1.34" type="text/css" />
+<link rel="stylesheet" href="variants/AncMed/resources/style.css?var=1.34" type="text/css" />
+<link rel="stylesheet" href="variants/ClassicFvA/resources/style.css?var=1.34" type="text/css" />
+<link rel="stylesheet" href="variants/ClassicChaos/resources/style.css?var=1.34" type="text/css" />
+<link rel="stylesheet" href="variants/Modern2/resources/style.css?var=1.34" type="text/css" />
+<link rel="stylesheet" href="variants/Empire4/resources/style.css?var=1.34" type="text/css" />
+<link rel="stylesheet" href="variants/ClassicGvI/resources/style.css?var=1.34" type="text/css" />
+<link rel="stylesheet" href="variants/KnownWorld_901/resources/style.css?var=1.34" type="text/css" />
+
+			<script type="text/javascript" src="javascript/desktopMode.js?ver=1.5"></script>
+			<title>Pop the Bee - webDiplomacy</title>
+		</head><body><!-- Menu begin. -->
+				<div id="header">
+					<div id="header-container">
+						<a href="./">
+							<img id="logo" src="images/logo.png" alt="webDiplomacy" />
+						</a>
+				<div>
+					<div id="header-welcome">
+						Welcome, <em>Guest</em> -
+						<span class="logon">(<a href="logon.php" class="light">Log on</a>)</span>
+					</div>
+			<div id="header-goto">
+            <div class="nav-wrap">
+			<div class = "nav-tab"> <a href="index.php?" title="See what's happening">Home</a> </div><div class = "nav-tab"> <a href="/contrib/phpBB3/" title="The forum; chat, get help, help others, arrange games, discuss strategies">Forum</a> </div>
+					<div class="nav-tab">
+						<a href="logon.php" title="Log onto webDiplomacy using an existing user account">Log on</a>
+					</div>
+					<div class="nav-tab">
+						<a href="register.php" title="Make a new user account">Register</a>
+					</div>
+					<div id="navSubMenu" class = "clickable nav-tab">Help ▼
+                        <div id="nav-drop">
+                        	<a href="rules.php">Site Rules</a>
+							<a href="faq.php" title="Frequently Asked Questions">FAQ</a>
+							<a href="intro.php" title="Intro to Diplomacy">Diplomacy Intro</a>
+							<a href="points.php" title="Points and Scoring Systems">Points/Scoring</a>
+							<a href="variants.php" title="Active webDiplomacy variants">Variants</a>
+							<a href="help.php" title="Site information, guides, stats, links">More Info</a>
+							<a href="donations.php">Donate</a>
+                        </div>
+                    </div></div></div></div>
+			</div></div>
+			<div id="seperator"></div>
+			<div id="seperator-fixed"></div>
+			<!-- Menu end. --><noscript><div class="content-notice">
+					<p class="notice">You do not have JavaScript enabled. It is required to use webDiplomacy fully.</p>
+				</div></noscript><div class="content-notice"><p class="notice"><a href="/contrib/phpBB3/viewtopic.php?f=5&t=1354&start=20">Click here</a> to learn more about an awesome new change to live games!
+<br> 
+If the current pandemic is causing disruptions to your life that prevent you from keeping up with your games please email webdipmod@gmail.com and we can arrange a pause or replacement as needed. Stay safe and healthy!</p></div></div><div class="content-bare content-board-header"><div class="boardHeader"><div class="variantClassic"><a name="gamePanel"></a><div class="titleBar">
+				
+			
+			<div class="titleBarRightSide">
+				<div>
+				<span class="gameTimeRemaining"><span class="gameTimeRemainingNextPhase">Next:</span> <span class="timeremaining" unixtime="1586040705" unixtimefrom="1585781624">2 days, 24 hours</span> (<span class="timestampGames" unixtime="1586040705">Sat 10 PM UTC</span>)</span></div></div>
+			<div class="titleBarLeftSide">
+				<span class="gameName">Pop the Bee</span></div>
+			<div style="clear:both"></div>
+			<div class="titleBarRightSide"><div><span class="gameHoursPerPhase"><strong>3 days</strong> /phase</span></div></div>
+			<div class="titleBarLeftSide"><div>
+				Pot: <span class="gamePot">35  <img src="images/icons/points.png" alt="D" title="webDiplomacy points" /></span> - <span class="gameDate">Spring, 1904</span>, <span class="gamePhase">Diplomacy</span></div><div><div class="titleBarLeftSide">
+				<span class="gamePotType"><a class="light" href="variants.php#Classic">Classic</a>, Bot Game, Unranked</span>
+				</div>
+			</div></div>
+			<div style="clear:both"></div>
+			<div class="titleBarRightSide"><span class="excusedNMRs">4</span>
+					 excused missed turn</div>
+			<div style="clear:both"></div>
+			</div><div class="panelBarGraphTop occupationBar"><table class="occupationBarTable"><tr>
+					<td class="occupationBar1 first" style="width:13%"></td><td class="occupationBar2 " style="width:18%"></td><td class="occupationBar3 " style="width:12%"></td><td class="occupationBar4 " style="width:15%"></td><td class="occupationBar5 " style="width:18%"></td><td class="occupationBar6 " style="width:12%"></td><td class="occupationBar7 " style="width:12%"></td>
+				</tr></table></div></div></div></div><div class="content content-follow-on variantClassic"><a name="chatboxanchor"></a><a name="chatbox"></a><div class = "chatWrapper"><DIV class="chatbox chatboxnotabs">
+					<TABLE class="chatbox">
+					<TR class="barAlt2 membersList">
+					<TD><div class="chatboxMembersList"><span class="memberStatusPlaying"><a class="country1" href="profile.php?userID=108978">Zultar Bot</a></span>, <span class="memberStatusPlaying"><a class="country2" href="profile.php?userID=28108">MichiganMan</a></span>, <span class="memberStatusPlaying"><a class="country3" href="profile.php?userID=108983">Data</a></span>, <span class="memberStatusPlaying"><a class="country4" href="profile.php?userID=108979">Skynet</a></span>, <span class="memberStatusPlaying"><a class="country5" href="profile.php?userID=108388">Kestas Bot</a></span>, <span class="memberStatusPlaying"><a class="country6" href="profile.php?userID=108980">Jane</a></span>, <span class="memberStatusPlaying"><a class="country7" href="profile.php?userID=108982">Cortana</a></span></div></TD></TR></TABLE></DIV><DIV id="chatboxscroll" class="chatbox"><TABLE class="chatbox"><TR class="barAlt1"><td class="notice">
+					No messages yet posted.</td></TR></TABLE></DIV></div><div class="hr"></div>
+		<div id="mapstore">
+			<img id="mapImage" src="cache/games/2804/280414/5-small.map?nocache=82329" alt=" " title="The small map for the current phase. If you are starting a new turn this will show the last turn's orders" />
+			<p class="lightgrey" style="text-align:center">
+				<a class="mapnav" href="#" onClick="loadMap(280414,5,-1); return false;">
+                      <img id="Start" src="images/historyicons/Start_disabled.png" alt="Start" title="View the map from the first turn" /></a>
+				<a class="mapnav" href="#" onClick="loadMapStep(280414,5,-1); return false;"><img id="Backward" src="images/historyicons/Backward_disabled.png" alt="Backward" title="View the map from the previous turn" /></a>
+                <!--    The following is the toggle for removing the movement arrows. Uncomment this section if you want the movement arrow toggle.
+                <a class="mapnav" href="#" onClick="toggleMoves(280414,5); return false;"><img id="NoMoves" src="images/historyicons/hidemoves.png" alt="NoMoves" title="Toggle movement lines" />
+                </a>                 -->
+			   <a id="LargeMapLink" class="mapnav" href="map.php?gameID=280414&turn=5&mapType=large" target="_blank" class="light"><img src="images/historyicons/external.png" alt="Open large map" title="This button will open the large map in a new window. The large map shows all the moves, and is useful when the small map isn't clear enough." /></a></span>
+                     
+				<a class="mapnav" href="#" onClick="loadMapStep(280414,5,1); return false;"><img id="Forward" src="images/historyicons/Forward_disabled.png" alt="Forward" title="View the map from the next turn" /></a>
+				<a class="mapnav" href="#" onClick="loadMap(280414,5,5); return false;"><img id="End" src="images/historyicons/End_disabled.png" alt="End" title="View the map from the most recent turn" /></a>
+							
+			</p>
+			<p id="History" class="lightgrey"></p>
+		</div><div class="hr"></div>
+		<div class="gamePanel variantClassic">
+			
+			<div class="panelBarGraph occupationBar">
+				<table class="occupationBarTable"><tr>
+					<td class="occupationBar1 first" style="width:13%"></td><td class="occupationBar2 " style="width:18%"></td><td class="occupationBar3 " style="width:12%"></td><td class="occupationBar4 " style="width:15%"></td><td class="occupationBar5 " style="width:18%"></td><td class="occupationBar6 " style="width:12%"></td><td class="occupationBar7 " style="width:12%"></td>
+				</tr></table>
+			</div>
+			<div class="membersList membersFullTable">
+				<table><tr class="member memberAlternate1"><td class="memberLeftSide">
+			<span class="memberCountryName"> <span class="member1203545StatusIcon"><img src="images/icons/alert.png" alt="Not received" title="No orders submitted!" /> </span><span class="country2  memberStatusPlaying">France</span></span>
+			</td>
+			<td class="memberRightSide ">
+				<div>
+				<div class="memberUserDetail">
+					<span class="memberName"><a href="profile.php?userID=28108">MichiganMan</a>
+				
+				<span class="points">(5214 <img src="images/icons/points.png" alt="D" title="webDiplomacy points" />)</span></span>  - Delays left: <span class="excusedNMRs">4</span> of <span class="excusedNMRs">4</span></span>
+				</div>
+				<div class="memberGameDetail">
+					<span class="memberPointsCount">Bet: <em>5 <img src="images/icons/points.png" alt="D" title="webDiplomacy points" /></em>, worth: <em>5 <img src="images/icons/points.png" alt="D" title="webDiplomacy points" /></em></span><br /><span class="memberUnitCount"><span class="memberSCCount"><em>6</em> supply-centers, <em class="neutral">6</em> units</span></span>
+				</div>
+				<div style="clear:both"></div>
+				</div><div class="panelBarGraphCountry memberProgressBar"><table class="memberProgressBarTable"><tr><td class="memberProgressBarSCs first" style="width:33%"></td><td class="memberProgressBarRemaining " style="width:67%"></td></tr></table></div></td></tr><tr class="member memberAlternate2"><td class="memberLeftSide">
+			<span class="memberCountryName"> <span class="member1203546StatusIcon"><img src="images/icons/tick.png" alt="Ready" title="Ready to move to the next turn" /> </span><span class="country5  memberStatusPlaying">Austria</span></span>
+			</td>
+			<td class="memberRightSide ">
+				<div>
+				<div class="memberUserDetail">
+					<span class="memberName"><a href="profile.php?userID=108388">Kestas Bot</a>
+				
+				<span class="points">(115 <img src="images/icons/points.png" alt="D" title="webDiplomacy points" />)</span></span>  - Delays left: <span class="excusedNMRs">4</span> of <span class="excusedNMRs">4</span></span>
+				</div>
+				<div class="memberGameDetail">
+					<span class="memberPointsCount">Bet: <em>5 <img src="images/icons/points.png" alt="D" title="webDiplomacy points" /></em>, worth: <em>5 <img src="images/icons/points.png" alt="D" title="webDiplomacy points" /></em></span><br /><span class="memberUnitCount"><span class="memberSCCount"><em>6</em> supply-centers, <em class="neutral">6</em> units</span></span>
+				</div>
+				<div style="clear:both"></div>
+				</div><div class="panelBarGraphCountry memberProgressBar"><table class="memberProgressBarTable"><tr><td class="memberProgressBarSCs first" style="width:33%"></td><td class="memberProgressBarRemaining " style="width:67%"></td></tr></table></div></td></tr><tr class="member memberAlternate1"><td class="memberLeftSide">
+			<span class="memberCountryName"> <span class="member1203547StatusIcon"><img src="images/icons/tick.png" alt="Ready" title="Ready to move to the next turn" /> </span><span class="country1  memberStatusPlaying">England</span></span>
+			</td>
+			<td class="memberRightSide ">
+				<div>
+				<div class="memberUserDetail">
+					<span class="memberName"><a href="profile.php?userID=108978">Zultar Bot</a>
+				
+				<span class="points">(165 <img src="images/icons/points.png" alt="D" title="webDiplomacy points" />)</span></span>  - Delays left: <span class="excusedNMRs">4</span> of <span class="excusedNMRs">4</span></span>
+				</div>
+				<div class="memberGameDetail">
+					<span class="memberPointsCount">Bet: <em>5 <img src="images/icons/points.png" alt="D" title="webDiplomacy points" /></em>, worth: <em>5 <img src="images/icons/points.png" alt="D" title="webDiplomacy points" /></em></span><br /><span class="memberUnitCount"><span class="memberSCCount"><em>5</em> supply-centers, <em class="neutral">5</em> units</span></span>
+				</div>
+				<div style="clear:both"></div>
+				</div><div class="panelBarGraphCountry memberProgressBar"><table class="memberProgressBarTable"><tr><td class="memberProgressBarSCs first" style="width:28%"></td><td class="memberProgressBarRemaining " style="width:72%"></td></tr></table></div></td></tr><tr class="member memberAlternate2"><td class="memberLeftSide">
+			<span class="memberCountryName"> <span class="member1203548StatusIcon"><img src="images/icons/tick.png" alt="Ready" title="Ready to move to the next turn" /> </span><span class="country4  memberStatusPlaying">Germany</span></span>
+			</td>
+			<td class="memberRightSide ">
+				<div>
+				<div class="memberUserDetail">
+					<span class="memberName"><a href="profile.php?userID=108979">Skynet</a>
+				
+				<span class="points">(165 <img src="images/icons/points.png" alt="D" title="webDiplomacy points" />)</span></span>  - Delays left: <span class="excusedNMRs">4</span> of <span class="excusedNMRs">4</span></span>
+				</div>
+				<div class="memberGameDetail">
+					<span class="memberPointsCount">Bet: <em>5 <img src="images/icons/points.png" alt="D" title="webDiplomacy points" /></em>, worth: <em>5 <img src="images/icons/points.png" alt="D" title="webDiplomacy points" /></em></span><br /><span class="memberUnitCount"><span class="memberSCCount"><em>5</em> supply-centers, <em class="neutral">5</em> units</span></span>
+				</div>
+				<div style="clear:both"></div>
+				</div><div class="panelBarGraphCountry memberProgressBar"><table class="memberProgressBarTable"><tr><td class="memberProgressBarSCs first" style="width:28%"></td><td class="memberProgressBarRemaining " style="width:72%"></td></tr></table></div></td></tr><tr class="member memberAlternate1"><td class="memberLeftSide">
+			<span class="memberCountryName"> <span class="member1203551StatusIcon"><img src="images/icons/tick.png" alt="Ready" title="Ready to move to the next turn" /> </span><span class="country3  memberStatusPlaying">Italy</span></span>
+			</td>
+			<td class="memberRightSide ">
+				<div>
+				<div class="memberUserDetail">
+					<span class="memberName"><a href="profile.php?userID=108983">Data</a>
+				
+				<span class="points">(165 <img src="images/icons/points.png" alt="D" title="webDiplomacy points" />)</span></span>  - Delays left: <span class="excusedNMRs">4</span> of <span class="excusedNMRs">4</span></span>
+				</div>
+				<div class="memberGameDetail">
+					<span class="memberPointsCount">Bet: <em>5 <img src="images/icons/points.png" alt="D" title="webDiplomacy points" /></em>, worth: <em>5 <img src="images/icons/points.png" alt="D" title="webDiplomacy points" /></em></span><br /><span class="memberUnitCount"><span class="memberSCCount"><em>4</em> supply-centers, <em class="neutral">4</em> units</span></span>
+				</div>
+				<div style="clear:both"></div>
+				</div><div class="panelBarGraphCountry memberProgressBar"><table class="memberProgressBarTable"><tr><td class="memberProgressBarSCs first" style="width:22%"></td><td class="memberProgressBarRemaining " style="width:78%"></td></tr></table></div></td></tr><tr class="member memberAlternate2"><td class="memberLeftSide">
+			<span class="memberCountryName"> <span class="member1203549StatusIcon"><img src="images/icons/tick.png" alt="Ready" title="Ready to move to the next turn" /> </span><span class="country6  memberStatusPlaying">Turkey</span></span>
+			</td>
+			<td class="memberRightSide ">
+				<div>
+				<div class="memberUserDetail">
+					<span class="memberName"><a href="profile.php?userID=108980">Jane</a>
+				
+				<span class="points">(160 <img src="images/icons/points.png" alt="D" title="webDiplomacy points" />)</span></span>  - Delays left: <span class="excusedNMRs">4</span> of <span class="excusedNMRs">4</span></span>
+				</div>
+				<div class="memberGameDetail">
+					<span class="memberPointsCount">Bet: <em>5 <img src="images/icons/points.png" alt="D" title="webDiplomacy points" /></em>, worth: <em>5 <img src="images/icons/points.png" alt="D" title="webDiplomacy points" /></em></span><br /><span class="memberUnitCount"><span class="memberSCCount"><em>4</em> supply-centers, <em class="neutral">4</em> units</span></span>
+				</div>
+				<div style="clear:both"></div>
+				</div><div class="panelBarGraphCountry memberProgressBar"><table class="memberProgressBarTable"><tr><td class="memberProgressBarSCs first" style="width:22%"></td><td class="memberProgressBarRemaining " style="width:78%"></td></tr></table></div></td></tr><tr class="member memberAlternate1"><td class="memberLeftSide">
+			<span class="memberCountryName"> <span class="member1203550StatusIcon"><img src="images/icons/tick.png" alt="Ready" title="Ready to move to the next turn" /> </span><span class="country7  memberStatusPlaying">Russia</span></span>
+			</td>
+			<td class="memberRightSide ">
+				<div>
+				<div class="memberUserDetail">
+					<span class="memberName"><a href="profile.php?userID=108982">Cortana</a>
+				
+				<span class="points">(150 <img src="images/icons/points.png" alt="D" title="webDiplomacy points" />)</span></span>  - Delays left: <span class="excusedNMRs">4</span> of <span class="excusedNMRs">4</span></span>
+				</div>
+				<div class="memberGameDetail">
+					<span class="memberPointsCount">Bet: <em>5 <img src="images/icons/points.png" alt="D" title="webDiplomacy points" /></em>, worth: <em>5 <img src="images/icons/points.png" alt="D" title="webDiplomacy points" /></em></span><br /><span class="memberUnitCount"><span class="memberSCCount"><em>4</em> supply-centers, <em class="neutral">4</em> units</span></span>
+				</div>
+				<div style="clear:both"></div>
+				</div><div class="panelBarGraphCountry memberProgressBar"><table class="memberProgressBarTable"><tr><td class="memberProgressBarSCs first" style="width:22%"></td><td class="memberProgressBarRemaining " style="width:78%"></td></tr></table></div></td></tr></table>
+			</div>
+			<div class="panelBarGraph occupationBar">
+				<table class="occupationBarTable"><tr>
+					<td class="occupationBar1 first" style="width:13%"></td><td class="occupationBar2 " style="width:18%"></td><td class="occupationBar3 " style="width:12%"></td><td class="occupationBar4 " style="width:15%"></td><td class="occupationBar5 " style="width:18%"></td><td class="occupationBar6 " style="width:12%"></td><td class="occupationBar7 " style="width:12%"></td>
+				</tr></table>
+			</div>
+			<div class="bar archiveBar"> <strong>Archive:</strong> <a href="board.php?gameID=280414&amp;viewArchive=Orders">Orders</a>
+			- <a href="board.php?gameID=280414&amp;viewArchive=Maps">Maps</a>
+			- <a href="board.php?gameID=280414&amp;viewArchive=Messages">Messages</a></div> 
+			<div class="bar enterBar">
+				<div class="enterBarJoin">
+					
+				</div>
+				<div class="enterBarOpen">
+					
+				</div>
+				<div style="clear:both"></div>
+			</div>
+			
+			<div class="bar lastBar"> </div>
+		</div></div><div id="footer">Rendered in: <strong>0.02sec</strong> - Data retrievals: <strong>66</strong> - Data insertions: <strong>3</strong>  - Memory used: <strong>0.543MB</strong> <br /><br />Logged on: <strong>267</strong>  - Playing: <strong>4035</strong>  - Registered: <strong>119147</strong>  - Pages served: <strong>287164251</strong><br />Starting games: <strong>255</strong>  - Joinable games: <strong>0</strong>  - Active games: <strong>1135</strong>  - Finished games: <strong>112377</strong> <br /><br />webDiplomacy version <strong>1.63</strong><br />
+			<div>
+			<a class="light" id="js-desktop-mode" style="cursor: pointer; color: #006699;" onclick="toggleDesktopMode(true)">Enable Desktop Mode</a>
+			</div>
+			<br />
+
+			<a href="http://github.com/kestasjk/webDiplomacy" class="light">GitHub Project</a> |
+			<a href="http://github.com/kestasjk/webDiplomacy/issues" class="light">Bug Reports</a> | <a href="mailto:webdipmod@gmail.com" class="light">Moderator Email</a> |
+			<a href="contactUsDirect.php" class="light">Contact Us Directly</a><br />Times are <strong id="UTCOffset">UTC+0:00</strong><script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-1897678-4");
+pageTracker._trackPageview();
+} catch(err) {}</script>
+<script type="text/javascript" src="javascript/../locales/layer.js?ver=1.5"></script><script type="text/javascript" src="javascript/../locales/English/layer.js?ver=1.5"></script><script type="text/javascript" src="javascript/contrib/sprintf.js?ver=1.5"></script><script type="text/javascript" src="javascript/utility.js?ver=1.5"></script><script type="text/javascript" src="javascript/cacheUpdate.js?ver=1.5"></script><script type="text/javascript" src="javascript/timeHandler.js?ver=1.5"></script><script type="text/javascript" src="javascript/forum.js?ver=1.5"></script><script type="text/javascript" src="javascript/Color.Vision.Daltonize.js?ver=1.5"></script><script type="text/javascript" src="javascript/mapUI.js?ver=1.5"></script>
+		<script type="text/javascript">
+			var UserClass = function () {
+				this.id=1;
+				this.username="Guest";
+				this.points=0
+				this.lastMessageIDViewed=0;
+				this.timeLastSessionEnded=1154508107;
+				this.token="1ab27f02e2124a1ca3e85ccb7e26d47d";
+				this.darkMode="No";
+			}
+			User = new UserClass();
+			var headerEvent = document.getElementsByClassName("clickable");
+
+			WEBDIP_DEBUG=false;
+
+			document.observe("dom:loaded", function() {
+
+				try {
+					Locale.onLoad();
+
+					setForumMessageIcons();
+					setPostsItalicized();
+					updateTimestamps();
+					updateTimestampGames();
+					updateUTCOffset();
+					updateTimers();
+
+					
+			var cbs = $("chatboxscroll");
+
+			cbs.scrollTop = cbs.scrollHeight;
+			
+makeFormsSafe();
+turnToText=function(turn) {
+			if( turn==-1 ) return l_t("Pre-game");
+			else return ( turn%2 ? l_t("Autumn")+", " : l_t("Spring")+", " )+(Math.floor(turn/2) + 1901);
+		};
+		mapArrows(5,5);
+		
+
+					Locale.afterLoad();
+				}
+				catch( e ) {
+					
+				}
+			}, this);
+			document.observe("click", function(e) {
+				try {
+					clickOut(e);
+				} catch (e) {
+					
+				}
+			}, this)
+			for (var i = 0; i < headerEvent.length; i++) {
+				headerEvent[i].addEventListener("click", function(e){
+					try {
+						click(e);
+					} catch ( e ){
+						
+					}
+				}, this);
+			}
+			var toggle = localStorage.getItem("desktopEnabled");
+			var darkMode = localStorage.getItem("darkModeEnabled");
+			var dark = User.darkMode;
+			if (dark == "Yes") {
+				dark = true;
+			} else {
+				dark = false;
+			}
+			localStorage.setItem("darkModeEnabled", dark);
+			var toggleElem = document.getElementById('js-desktop-mode');
+            if (toggle == "true") {
+                if(toggleElem !== null) {
+                	toggleElem.innerHTML = "Disable Desktop Mode";
+                }
+            } else {
+                if(toggleElem !== null) {
+                	toggleElem.innerHTML = "Enable Desktop Mode";
+                }
+            }
+		</script>
+		</div></body></html>
