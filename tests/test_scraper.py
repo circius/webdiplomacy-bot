@@ -15,3 +15,9 @@ def test_can_get_players_from_html():
     players = scraper.soup_get_players(soup)
     assert len(players) == 7
     assert players == testdata.pop_the_bee_players
+
+
+def test_can_get_DipGame_state_from_html():
+    soup = scraper.get_soup_of_requests_html(testdata.pop_the_bee_html)
+    DipGame = scraper.soup_get_DipGame(soup)
+    assert DipGame == testdata.pop_the_bee_DipGame

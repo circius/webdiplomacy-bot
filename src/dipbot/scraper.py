@@ -22,17 +22,17 @@ def get_soup_of_requests_html(s: str) -> BeautifulSoup:
     return BeautifulSoup(s, "lxml")
 
 
-def soup_get_game_info(soup: BeautifulSoup) -> DipGame:
+def soup_get_DipGame(soup: BeautifulSoup) -> DipGame:
     """parses a Soup representing a webdiplomacy game page, and
 produces a DipGame representing the game state.
 
     """
     return {
-        "name": soup_get_game_name(r),
-        "year": soup_get_game_year(r),
-        "season": soup_get_game_season(r),
-        "retreats?": soup_retreatsP(r),
-        "players": soup_get_players(r),
+        "name": soup_get_game_name(soup),
+        "year": soup_get_game_year(soup),
+        "season": soup_get_game_season(soup),
+        "retreats?": soup_retreatsP(soup),
+        "players": soup_get_players(soup),
     }
 
 
@@ -117,7 +117,8 @@ def soup_get_game_season(soup: BeautifulSoup) -> str:
 produces a string representing the game's season.
 
     """
-    return ""
+    gamedate = soup.find("span", class_="gameDate").text
+    return gamedate.split(",")[0]
 
 
 def soup_get_game_year(soup: BeautifulSoup) -> int:
@@ -125,7 +126,8 @@ def soup_get_game_year(soup: BeautifulSoup) -> int:
 produces a string representing the game's year.
 
     """
-    return ""
+    gamedate = soup.find("span", class_="gameDate").text
+    return int(gamedate.split(",")[1])
 
 
 def soup_get_game_name(soup: BeautifulSoup) -> str:
@@ -133,4 +135,4 @@ def soup_get_game_name(soup: BeautifulSoup) -> str:
 produces a string representing the game's name.
 
     """
-    return ""
+    return soup.find("span", class_="gameName").text
