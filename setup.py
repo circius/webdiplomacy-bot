@@ -33,7 +33,7 @@ setuptools.setup(
         "discord.py",
         "requests",
         "bs4",
-        "lxml"
+        "lxml",
         "click"
     ],
     entry_points="""
