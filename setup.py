@@ -34,9 +34,11 @@ setuptools.setup(
         "requests",
         "bs4",
         "lxml"
+        "click"
     ],
     entry_points="""
     [console_scripts]
     dipbot=dipbot.cli:cli
 """,
 )
+
