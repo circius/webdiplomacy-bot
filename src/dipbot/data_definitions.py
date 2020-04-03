@@ -7,7 +7,7 @@ from typing import NewType, Dict
         'year' -> int
         'season' -> str
         'retreats?' -> bool
-        'players' -> [dict of Player]
+        'players' -> [list of Player]
 """
 
 DipGame = NewType("DipGame", Dict)
