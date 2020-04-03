@@ -1,15 +1,18 @@
 sudo: false
 language: python
 python:
-  - "3.7"
+- '3.7'
 install:
-  - pip install -e .
-  - pip install tox-travis
-  - pip install coverage
-  - pip install coveralls
+- pip install -e .
+- pip install tox-travis
+- pip install coverage
+- pip install coveralls
 script:
-  - tox
-  - coverage run --source src -m py.test
-  - coverage report -m
+- tox
+- coverage run --source src -m py.test
+- coverage report -m
 after_success:
-  - coveralls
+- coveralls
+env:
+  global:
+    secure: REzTgxjYN9bKeDKF7DCua4/R9ITQYICfGx3pb45D4CESaDRojCzXShTwysiTTiEmjjLaeQyOeiocJF9yE2c7+WVp00UWyQqgJbzxzdRGyTi1WIeRjLxp0JXLrZf49+Sm2nf+OdGZA23oOBnVpjtsunGQbcxbL+UEhwCUPu3yNPSltPOiACVcgSaypEmphwFmblLPiU8eeLoEDcF7ly3dJ3LyTFjYJ3DKEasBg59xdBLduik/ffnjfefXqVxtw8fXp4KCKyFjqIVdMtEu7T2YEaFQ29yO+WBn/XteTp05bS/18Hew4OpKyNb8VFlOEL0b9wHu69iVV2jMnTYKLQ/DT2GS1CpVeSu9ut/spuom17w3BAoy0VTj+EWrD9Li+LbmrKqymC+poAmbemgzSxgTlS8KGk4mtK5PAgjeNnFkZA6rd660c6H2IA81NVbf21sIEQOoeoVFylTNP2rw/UzU0S7sUA3QUu9ZhZWyyJwakT54HVOuzFkQk7/88GAfWudl4dD5auVuMFqbuZqNk30HhJCcnO/WZ1qnxatkEks0t6PrRFuaCLhnFq7wtZdkHmrRnlj18j74TOHQ2hAOG4BLjn4iONAoM6qExUtcTRp4Eb7jGXImhWQqonIsCoZIbGAULKCex6lEsFlfvqVQfi5QleMHsGYWQXZgVdS+WnrcdtU=
