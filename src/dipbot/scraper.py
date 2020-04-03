@@ -102,7 +102,9 @@ produces a list of the tags representing each player for further
 processing.
 
     """
-    return player_table.find_all("tr", class_="member")
+    all_member_rows = player_table.find_all("tr", class_="member")
+    rows_without_civil_disorder_notices = all_member_rows[:7]
+    return rows_without_civil_disorder_notices
 
 
 def soup_retreatsP(soup: BeautifulSoup) -> bool:
