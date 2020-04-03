@@ -43,10 +43,6 @@ produces a list of Players, representing each player's current state.
     """
     player_table = soup.find("div", class_="membersFullTable")
     player_rows = table_get_player_rows(player_table)
-    # print("player rows is a {}".format(type(player_rows)))
-    # print("its content is {}".format(player_rows))
-    # print("its length is {}".format(len(player_rows)))
-    # print("its first element is {}".format(player_rows[0]))
     return [row_get_player(row) for row in player_rows]
 
 
@@ -98,8 +94,6 @@ produces a list of the tags representing each player for further
 processing.
 
     """
-    # print(player_table)
-    # print(player_table.find_all("tr", class_="member"))
     return player_table.find_all("tr", class_="member")
 
 
