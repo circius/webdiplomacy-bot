@@ -30,7 +30,7 @@ setuptools.setup(
     python_requires=">=3.6",
     setup_requires=["pytest-runner",],
     install_requires=[
-        "discord-py",
+        "discord.py",
         "requests",
         "bs4",
         "lxml"
