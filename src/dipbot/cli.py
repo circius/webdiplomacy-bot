@@ -4,12 +4,18 @@
 """
 from dipbot import scraper, app
 import click
+from dipbot import app
+from dipbot.data_definitions import DipGame
 
 
 @click.command()
 def cli():
-    game_to_parse = click.prompt(
-        "Type the id of the game you want to check: ", type=int
-    )
-    dipgame = scraper.get_dipgame(game_to_parse)
+    game_id = app.get_env_var_checked(app.WEBDIP_ID_ENV_VAR_NAME)
+    dipgame = scraper.get_dipgame_checked(game_id)
+    try:
+        assert dipgame != False
+    except:
+        click.echo("exiting...")
+        exit()
+
     click.echo(app.announce_overall_game_state(dipgame))
