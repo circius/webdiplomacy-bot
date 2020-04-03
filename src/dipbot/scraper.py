@@ -24,7 +24,6 @@ no corresponding dipgame is found.
     return soup_get_DipGame(soup)
 
 
-def get_webdiplomacy_game_response(id: int) -> requests.models.Response:
 def response_webdip_game_exists(response: requests.models.Response) -> bool:
     """consumes a response from webdiplomacy.com and produces true if the
 response contains a game board, false otherwise.
@@ -33,9 +32,18 @@ response contains a game board, false otherwise.
     return "Game not found" not in response.text
 
 
+def get_webdiplomacy_game_response_checked(
+    id: int,
+) -> Union[requests.models.Response, bool]:
     """ gets the raw html of a public webdiplomacy board
 """
-    return requests.get(WEBDIP_GAMES_ROOT_URL + str(id))
+    response = requests.get(WEBDIP_GAMES_ROOT_URL + str(id))
+    try:
+        assert response_webdip_game_exists(response)
+    except:
+        print(f"Game with id {id} not found")
+        return False
+    return response
 
 
 def get_soup_of_requests_html(s: str) -> BeautifulSoup:
