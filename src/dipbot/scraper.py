@@ -10,6 +10,14 @@ from typing import List
 WEBDIP_GAMES_ROOT_URL = "https://webdiplomacy.net/board.php?gameID="
 
 
+def get_dipgame(id: int) -> DipGame:
+    """ consumes an id and produces the corresponding dipgame
+"""
+    response_text = get_webdiplomacy_game_response(id).text
+    soup = get_soup_of_requests_html(response_text)
+    return soup_get_DipGame(soup)
+
+
 def get_webdiplomacy_game_response(id: int) -> requests.models.Response:
     """ gets the raw html of a public webdiplomacy board
 """
