@@ -3,7 +3,7 @@ import os
 from dipbot import app, scraper
 
 api_token = os.getenv("DISCORD_API_KEY")
-webdip_id = int(os.getenv("WEBDIP_GAME_ID"))
+webdip_id = app.get_env_var_checked(app.WEBDIP_ID_ENV_VAR_NAME)
 
 client = discord.Client()
 
@@ -19,12 +19,12 @@ async def on_message(message):
         return
 
     if message.content == ("$status"):
-        dipgame = scraper.get_dipgame(webdip_id)
+        dipgame = scraper.get_dipgame_checked(webdip_id)
         status_message = app.announce_overall_game_state(dipgame)
         await message.channel.send(status_message)
 
     if message.content == ("$status!"):
-        dipgame = scraper.get_dipgame(webdip_id)
+        dipgame = scraper.get_dipgame_checked(webdip_id)
         urgent_message = f"{message.author.name} asked me to tell @everyone that:"
         status_message = app.announce_overall_game_state(dipgame)
         await message.channel.send(urgent_message + "\n" + status_message)

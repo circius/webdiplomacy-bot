@@ -5,6 +5,23 @@ of DipGames.
 """
 from dipbot.data_definitions import DipGame, Player
 from typing import List
+import os
+
+WEBDIP_ID_ENV_VAR_NAME = "WEBDIP_GAME_ID"
+
+
+def get_env_var_checked(varname: str) -> str:
+    """gets the value of an environment variable. raises an exception if
+the variable is not set.
+
+    """
+    value = os.getenv(varname)
+    try:
+        assert value != ""
+    except AssertionError:
+        print(f"{varname} unset! terminating...")
+        exit()
+    return value
 
 
 def announce_overall_game_state(state: DipGame) -> str:
