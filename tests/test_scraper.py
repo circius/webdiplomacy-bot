@@ -3,10 +3,14 @@ from bs4 import BeautifulSoup
 import testdata
 
 
-def test_can_get_webdiplomacy_game_111111():
+def test_can_get_DipGame_111111():
     response = scraper.get_webdiplomacy_game_response(111111)
     assert response.status_code == 200
     assert "Power From the Barrel of a Gun" in response.text
+    soup = scraper.get_soup_of_requests_html(response.text)
+    dipgame = scraper.soup_get_DipGame(soup)
+    assert len(dipgame["players"]) == 7
+    assert dipgame["name"] == "Power From the Barrel of a Gun"
 
 
 def test_can_get_players_from_html():
