@@ -4,7 +4,7 @@ import testdata
 
 
 def test_can_get_DipGame_111111():
-    response = scraper.get_webdiplomacy_game_response(111111)
+    response = scraper.get_webdiplomacy_game_response_checked(111111)
     assert response.status_code == 200
     assert "Power From the Barrel of a Gun" in response.text
     soup = scraper.get_soup_of_requests_html(response.text)

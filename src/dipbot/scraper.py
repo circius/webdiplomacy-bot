@@ -1,20 +1,26 @@
 # -*- coding: utf-8 -*-
-"""encapsulates functions which get structured data from webdiplomacy.
+"""encapsulates functions which get DipGames from webdiplomacy.
 
 """
 import requests
 from dipbot.data_definitions import DipGame, Player, Turn
 from bs4 import BeautifulSoup, Tag, ResultSet
-from typing import List
+from typing import List, Union
 
 WEBDIP_GAMES_ROOT_URL = "https://webdiplomacy.net/board.php?gameID="
 
 
-def get_dipgame(id: int) -> DipGame:
-    """ consumes an id and produces the corresponding dipgame
-"""
-    response_text = get_webdiplomacy_game_response(id).text
-    soup = get_soup_of_requests_html(response_text)
+def get_dipgame_checked(id: int) -> Union[DipGame, bool]:
+    """consumes an id and produces the corresponding dipgame, or False if
+no corresponding dipgame is found.
+
+    """
+    response = get_webdiplomacy_game_response_checked(id)
+    try:
+        assert response != False
+    except:
+        return False
+    soup = get_soup_of_requests_html(response.text)
     return soup_get_DipGame(soup)
 
 
