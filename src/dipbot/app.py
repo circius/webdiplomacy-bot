@@ -28,7 +28,7 @@ def format_the_tardy_list(lop: List[Player]) -> str:
     else:
         player = lop[0]
         rest = lop[1:]
-        return f"""{player['name']}, whose orders are {player['turn status'].lower()}
+        return f"""  - {player['name']}, whose orders are {player['turn status'].lower()}
 {format_the_tardy_list(rest)}"""
 
 
