@@ -54,10 +54,10 @@ def player_is_not_ready(player: Player) -> bool:
 committed their orders.
 
     """
-    status = player['turn status']
-    print(f"player {player} has status {status}")
-    return not (status == "Ready" or status == "D") 
-    
+    status = player["turn status"]
+    return not (status == "Ready" or status == "D")
+
+
 def dipgame_get_uncommitted_players(state: DipGame) -> List[Player]:
     """ consumes a DipGame and produces a list of those players who haven't yet committed their turns.
 """
