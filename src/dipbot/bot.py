@@ -36,7 +36,6 @@ def main():
             return
 
         if message.content == ("$status"):
-            dipgame = scraper.get_dipgame_checked(webdip_id)
             status_message = app.announce_overall_game_state(dipgame)
             await message.channel.send(status_message)
 
