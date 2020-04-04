@@ -39,13 +39,11 @@ def main():
             status_message = app.announce_overall_game_state(dipgame)
             await message.channel.send(status_message)
 
-            if message.content == ("$status!"):
-                dipgame = scraper.get_dipgame_checked(webdip_id)
-                urgent_message = (
-                    f"{message.author.name} asked me to tell @everyone that:"
-                )
-                status_message = app.announce_overall_game_state(dipgame)
-                await message.channel.send(urgent_message + "\n" + status_message)
+        if message.content == ("$status!"):
+
+            urgent_message = f"{message.author.name} asked me to tell @everyone that:"
+            status_message = app.announce_overall_game_state(dipgame)
+            await message.channel.send(urgent_message + "\n" + status_message)
 
     client.run(api_token)
 
