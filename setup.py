@@ -8,7 +8,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="dipbot",
-    version="0.0.1",
+    version="0.1",
     author="circius",
     author_email="circius@posteo.de",
     description="webdiplomacy status reporter bot for discord",
@@ -21,7 +21,7 @@ setuptools.setup(
     include_package_data=True,
     zip_safe=False,
     classifiers=[
-        "Development Status :: 1 - Planning",
+        "Development Status :: 3 - Alpha",
         "Programming Language :: Python :: 3",
         "License :: OSI Approved :: MIT License",
         "Topic :: Utilities",
@@ -34,7 +34,7 @@ setuptools.setup(
         "requests",
         "bs4",
         "lxml",
-        "click"
+        "Click"
     ],
     entry_points="""
     [console_scripts]
