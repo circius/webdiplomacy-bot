@@ -15,6 +15,7 @@ setuptools.setup(
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://github.com/circius/webdiplomacy-bot",
+    download_url="https://github.com/circius/webdiplomacy-bot/archive/0.1.tar.gz",
     packages=setuptools.find_packages("src"),
     package_dir={"": "src"},
     py_modules=[splitext(basename(path))[0] for path in glob("src/*.py")],
