@@ -11,7 +11,7 @@ setuptools.setup(
     version="0.0.1",
     author="circius",
     author_email="circius@posteo.de",
-    description="webdiplomacy status reporter bot",
+    description="webdiplomacy status reporter bot for discord",
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://github.com/circius/webdiplomacy-bot",
