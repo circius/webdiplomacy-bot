@@ -4,23 +4,23 @@ of DipGames.
 
 """
 from dipbot.data_definitions import DipGame, Player
-from typing import List
+from typing import List, Union
 import os
 
 WEBDIP_ID_ENV_VAR_NAME = "WEBDIP_GAME_ID"
 
 
-def get_env_var_checked(varname: str) -> str:
-    """gets the value of an environment variable. raises an exception if
-the variable is not set.
+def get_env_var_checked(varname: str) -> Union[str, bool]:
+    """gets the value of an environment variable. raises an exception and
+returns False if the variable is not set.
 
     """
     value = os.getenv(varname)
     try:
-        assert value != ""
+        assert value != None and value != ""
     except AssertionError:
         print(f"{varname} unset! terminating...")
-        exit()
+        return False
     return value
 
 
@@ -48,7 +48,7 @@ def format_the_tardy_list(lop: List[Player]) -> str:
         return f"""  - {player['name']}, whose orders are {player['turn status'].lower()}
 {format_the_tardy_list(rest)}"""
 
-            
+
 def player_is_not_ready(player: Player) -> bool:
     """consumes a player and produces true if the player hasn't yet
 committed their orders.
