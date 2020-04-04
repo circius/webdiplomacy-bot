@@ -48,8 +48,17 @@ def format_the_tardy_list(lop: List[Player]) -> str:
         return f"""  - {player['name']}, whose orders are {player['turn status'].lower()}
 {format_the_tardy_list(rest)}"""
 
+            
+def player_is_not_ready(player: Player) -> bool:
+    """consumes a player and produces true if the player hasn't yet
+committed their orders.
 
+    """
+    status = player['turn status']
+    print(f"player {player} has status {status}")
+    return not (status == "Ready" or status == "D") 
+    
 def dipgame_get_uncommitted_players(state: DipGame) -> List[Player]:
     """ consumes a DipGame and produces a list of those players who haven't yet committed their turns.
 """
-    return [player for player in state["players"] if player["turn status"] != "Ready"]
+    return [player for player in state["players"] if player_is_not_ready(player)]
