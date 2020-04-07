@@ -67,4 +67,4 @@ which parses the status of the game and reports it to the shell before quitting,
 $ dipbot daemon
 ```
 
-which attempts to initialize a discord bot corresponding to the token stored in DISCORD_API_KEY, and which will respond with a report when addressed on discord with the messages "$status" and "!status".
+which attempts to initialize a discord bot corresponding to the token stored in DISCORD_API_KEY, and which will respond with a report when addressed on discord with the messages "$status" and "$status!".
