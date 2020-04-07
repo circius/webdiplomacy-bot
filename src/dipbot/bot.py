@@ -1,6 +1,23 @@
 import discord
 import os
 from dipbot import app, scraper
+from dipbot.data_definitions import DipGame
+
+
+def client_get_dipgame_checked(client: discord.Client, game_id: int) -> DipGame:
+    """consumes a discord.py Client and a webdiplomacy game_id and
+produces the corresponding DipGame.
+
+    """
+    dipgame = scraper.get_dipgame_checked(game_id)
+    try:
+        assert dipgame != False
+    except:
+        print(
+            "Could not get status of game with id {game_id}. Are you sure it's valid? Exiting..."
+        ).format(client)
+        exit(1)
+    return dipgame
 
 
 def main():
@@ -15,15 +32,6 @@ def main():
         assert game_id != False
     except:
         exit(1)
-    dipgame = scraper.get_dipgame_checked(game_id)
-    try:
-        assert dipgame != False
-    except:
-        print(
-            "Could not get status of game with id {game_id}. Are you sure it's valid? Exiting..."
-        ).format(client)
-        exit(1)
-
     client = discord.Client()
 
     @client.event
@@ -34,6 +42,8 @@ def main():
     async def on_message(message):
         if message.author == client.user:
             return
+
+        dipgame = client_get_dipgame_checked(client, game_id)
 
         if message.content == ("$status"):
             status_message = app.announce_overall_game_state(dipgame)
