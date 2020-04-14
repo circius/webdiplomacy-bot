@@ -30,6 +30,22 @@ pop_the_bee_DipGame = {
     "name": "Pop the Bee",
     "year": 1904,
     "season": "Spring",
-    "retreats?": False,
+    "phase": "diplomacy",
+    "players": pop_the_bee_players,
+}
+
+pop_the_bee_retreats_DipGame = {
+    "name": "Pop the Bee",
+    "year": 1905,
+    "season": "Autumn",
+    "phase": "retreats",
+    "players": pop_the_bee_players,
+}
+
+pop_the_bee_builds_DipGame = {
+    "name": "Pop the Bee",
+    "year": 1905,
+    "season": "Autumn",
+    "phase": "builds",
     "players": pop_the_bee_players,
 }
