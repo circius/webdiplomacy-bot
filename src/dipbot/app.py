@@ -59,7 +59,6 @@ description.
 
     """
 
-    return GAME_PHASE_DESCRIPTIONS[phase]
     description = GAME_PHASE_DESCRIPTIONS[phase][0]
     allotted_time = GAME_PHASE_DESCRIPTIONS[phase][1]
 
