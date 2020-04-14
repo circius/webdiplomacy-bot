@@ -10,21 +10,34 @@ thing on the host.
 
 ## functionality
 
-For the moment it only produces one kind of announcement, in the
-following format:
+When running as a discord bot, dipbot will produce output when it sees
+the following messages:
 
+ - `$status`, which produces a concise statement of the webdiplomacy game state,
+ - `$status!`, which produces the output of `$status`, but also mentions @everyone,
+ - `$status?`, which produces the output of `$status`, along with a
+   verbose description of the game phase, and
+ - `$status?!`, or `$status!?`, which produces the output of
+   `$status?` but also mentions @everyone.
+
+A `$status` request produces output in the following format:
+
+``` shell
 "It is the [season] of [year].
+[phase].
 We are awaiting the order of:
 [list of non-ready players with their order statuses]"
-
-In a discord channel it will do this in response to the message "$status".
-
-run as a cli app, it will simply output a similar message and terminate.
+```
+run as `dipbot report`, dipbot will produce the output of `$status`.
 
 ## configuration
 
 dipbot depends on two environment variables which must be correctly
-set for it to function. 
+set for it to function. There are also two environment variables which
+it is highly advisable to set, since the bot is able to be more
+informative in its verbose mode if they are.
+
+### compulsory environment variables
 
 In order to know which game to parse, the environment variable
 WEBDIP_GAME_ID must be set to the corresponding webdiplomacy.com game
@@ -38,6 +51,22 @@ a bot account as described
 [here](https://discordpy.readthedocs.io/en/latest/discord.html), and
 to set the environment variable DISCORD_API_KEY to the value of the
 bot's token.
+
+### optional environment variables
+
+Dipbot is able to provide verbose output in order to give new players
+more support in understanding the significance of the various
+phases. This verbose output varies according to the phase, and
+includes an announcement of the amount of time the group has decided
+to allow for each turn. For instance, a group might want to run a game
+in which 7 days are allowed for the diplomacy phases, but the builds
+and retreats phases should be completed within 2 days each.
+
+In order to support this kind of adjustment of the verbose messages,
+dipbot supports two further environment variables: MAIN_PHASE_LENGTH
+(representing diplomacy phases) and AUXILIARY_PHASE_LENGTH
+(representing builds and retreats.) They should be set to an english
+phrase representing duration, for instance "7 days" or "24 hours".
 
 ## installation
 
