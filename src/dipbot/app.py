@@ -18,12 +18,14 @@ AUXILIARY_PHASE_LENGTH = utilities.get_env_var_checked(
 )
 
 GAME_PHASE_DESCRIPTIONS = {
-    "diplomacy": f"""This is a normal turn devoted to diplomacy, intrigue, and manoeuvre. In order to complete your turn you have to assign orders to all of your units, then click 'ready'; but you should expect to spend a good deal of time negotiating with enemies and friends about how to proceed. We have agreed to apply orders in this phase within {MAIN_PHASE_LENGTH}; the game will proceed automatically after that time has elapsed. IMPORTANT NOTE: provinces will only change hands if they are occupied *at the end of the year* by an invading power; if I move into an enemy province in the spring, then move out again in the autumn leaving it unoccupied, that province will not change hands.
-""",
-    "retreats": f"""This is the 'retreats' phase, one of the two auxiliary phases which occur at the end of each year. Only those powers who have been defeated and forced to retreat from some province have any orders to give; everyone else is waiting. We have agreed that these auxiliary phases should be completed within {AUXILIARY_PHASE_LENGTH}.
-""",
-    "builds": f"""This is the 'builds' phase, one of the two auxiliary phases which occur at the end of each year. Only those powers who have gained or lost supply centers in the course of the last year will have any orders to give; those who have gained supply centres will be able to build new armies in their core provinces; those who have lost supply centres will have to destroy armies. Everyone else is waiting. We have agreed that these auxiliary phases should be completed within {AUXILIARY_PHASE_LENGTH}.
-""",
+    "diplomacy": [f"""This is a normal phase of diplomacy and manoeuvre.""", MAIN_PHASE_LENGTH],
+    
+    "retreats": [f"""Only those powers who have been defeated and forced to retreat from some province have any orders to give; everyone else is waiting.""", AUXILIARY_PHASE_LENGTH],
+    
+    "builds": [f"""In this phase:
+  - those who have gained supply centres will be able to build new armies in their core provinces;
+  - those who have lost supply centres will have to destroy armies.
+Everyone else is waiting.""", AUXILIARY_PHASE_LENGTH],
 }
 
 
