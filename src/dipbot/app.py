@@ -14,14 +14,6 @@ def get_env_var_checked(varname: str) -> Union[str, bool]:
     """gets the value of an environment variable. raises an exception and
 returns False if the variable is not set.
 
-    """
-    value = os.getenv(varname)
-    try:
-        assert value != None and value != ""
-    except AssertionError:
-        print(f"{varname} unset! terminating...")
-        return False
-    return value
 
 
 def announce_overall_game_state(state: DipGame) -> str:
