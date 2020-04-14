@@ -3,7 +3,7 @@
 
 """
 import requests
-from dipbot.data_definitions import DipGame, Player, Turn
+from dipbot.data_definitions import DipGame, Player, Turn, Phase
 from bs4 import BeautifulSoup, Tag, ResultSet
 from typing import List, Union
 
@@ -61,7 +61,7 @@ produces a DipGame representing the game state.
         "name": soup_get_game_name(soup),
         "year": soup_get_game_year(soup),
         "season": soup_get_game_season(soup),
-        "retreats?": soup_retreatsP(soup),
+        "phase": soup_get_phase(soup),
         "players": soup_get_players(soup),
     }
 
