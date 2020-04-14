@@ -59,3 +59,21 @@ def test_produces_verbose_descriptions_on_request():
     )
     assert len(verbose_announcement.split()) > len(announcement_builds.split())
 
+
+def test_verbose_report_will_show_timing_info_when_env_is_set():
+    app.GAME_PHASE_DESCRIPTIONS["diplomacy"][1] = "7 days"
+    verbose_announcement = app.announce_overall_game_state(
+        testdata.pop_the_bee_DipGame, True
+    )
+    assert "7 days" in verbose_announcement
+
+    verbose_announcement_retreats = app.announce_overall_game_state(
+        testdata.pop_the_bee_retreats_DipGame, True
+    )
+    assert "7 days" not in verbose_announcement_retreats
+
+    app.GAME_PHASE_DESCRIPTIONS["retreats"][1] = "48 hours"
+    verbose_announcement_retreats = app.announce_overall_game_state(
+        testdata.pop_the_bee_retreats_DipGame, True
+    )
+    assert "48 hours" in verbose_announcement_retreats
