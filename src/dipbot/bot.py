@@ -66,24 +66,33 @@ def main():
 
         invoking_user = message.author.name
 
-        if message.content == ("$status"):
+        request = message.content
+
+        print(f"request: {request}")
+
+        status_message = False
+
+        if request == "$status":
             status_message = app.announce_overall_game_state(dipgame)
 
-        elif message.content == ("$status!"):
+        if request == "$status!":
             status_message = create_urgent_message(
                 app.announce_overall_game_state(dipgame), invoking_user
             )
 
-        elif message.content == ("$status?"):
+        if request == "$status?":
             status_message = app.announce_overall_game_state(dipgame, verbose=True)
 
-        elif (message.content == ("$status?!")) or (message.content == ("status!?")):
+        if request == "$status!?" or request == "$status?!":
             status_message = create_urgent_message(
                 app.announce_overall_game_state(dipgame, verbose=True), invoking_user
             )
 
         if status_message:
+            print("served status")
             await message.channel.send(status_message)
+        else:
+            print(f"did not understand message `{request}`")
 
     client.run(api_token)
 
