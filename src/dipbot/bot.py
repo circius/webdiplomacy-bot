@@ -59,6 +59,9 @@ def main():
         if message.author == client.user:
             return
 
+        if message.content[0] != "$":
+            return
+
         dipgame = client_get_dipgame_checked(client, game_id)
 
         invoking_user = message.author.name
