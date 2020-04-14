@@ -43,6 +43,13 @@ interpreted as a request for help by dicebot, false otherwise.
     """
     return mentions_includes_name(message.mentions, "webdiplomacy")
 
+def mentions_includes_name(mentions: list, name: str) -> bool:
+    """consumes a list of mentions from a discord.py message and produces
+true if one of the users mentioned has the supplied NAME, false
+otherwise.
+
+    """
+    return any(map(lambda x: x.name == name, mentions))
 
 def main():
 
