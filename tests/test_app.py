@@ -40,7 +40,7 @@ def test_produces_verbose_descriptions_on_request():
     verbose_announcement = app.announce_overall_game_state(
         testdata.pop_the_bee_DipGame, True
     )
-    assert len(verbose_announcement.split()) > len(announcement)
+    assert len(verbose_announcement.split()) > len(announcement.split())
 
     announcement_retreats = app.announce_overall_game_state(
         testdata.pop_the_bee_retreats_DipGame
@@ -49,7 +49,7 @@ def test_produces_verbose_descriptions_on_request():
         testdata.pop_the_bee_retreats_DipGame, True
     )
 
-    assert len(verbose_announcement.split()) > len(announcement_retreats)
+    assert len(verbose_announcement.split()) > len(announcement_retreats.split())
 
     announcement_builds = app.announce_overall_game_state(
         testdata.pop_the_bee_builds_DipGame
@@ -57,4 +57,5 @@ def test_produces_verbose_descriptions_on_request():
     verbose_announcement_builds = app.announce_overall_game_state(
         testdata.pop_the_bee_builds_DipGame, True
     )
-    assert len(verbose_announcement.split()) > len(announcement_builds)
+    assert len(verbose_announcement.split()) > len(announcement_builds.split())
+
