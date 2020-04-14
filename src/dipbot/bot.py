@@ -36,6 +36,14 @@ set, the urgent message will blame that user.
     return "\n".join([urgent_prefix, normal_message])
 
 
+def message_is_help_commandP(message: discord.message) -> bool:
+    """consumes a dusord.py message and produces true if it should be
+interpreted as a request for help by dicebot, false otherwise.
+
+    """
+    return mentions_includes_name(message.mentions, "dipbot")
+
+
 def main():
 
     api_token = utilities.get_env_var_checked("DISCORD_API_KEY")
@@ -58,6 +66,15 @@ def main():
     async def on_message(message):
         if message.author == client.user:
             return
+
+        if message_is_help_commandP(message):
+            await message.channel.send(
+                """I understand the following instructions:
+ - `$status`
+ - `$status!`
+ - `$status?``
+ - `$status!?``"""
+            )
 
         if message.content[0] != "$":
             return
