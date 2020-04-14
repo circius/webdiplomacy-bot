@@ -4,7 +4,7 @@
 """
 from dipbot import scraper, app
 import click
-from dipbot import app, bot
+from dipbot import app, bot, utilities
 from dipbot.data_definitions import DipGame
 
 
@@ -15,7 +15,7 @@ def cli():
 
 @cli.command()
 def report():
-    game_id = app.get_env_var_checked(app.WEBDIP_ID_ENV_VAR_NAME)
+    game_id = utilities.get_env_var_checked(app.WEBDIP_ID_ENV_VAR_NAME)
     try:
         assert game_id != False
     except:

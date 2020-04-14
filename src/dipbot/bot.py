@@ -1,6 +1,6 @@
 import discord
 import os
-from dipbot import app, scraper
+from dipbot import app, scraper, utilities
 from dipbot.data_definitions import DipGame
 
 
@@ -22,12 +22,12 @@ produces the corresponding DipGame.
 
 def main():
 
-    api_token = app.get_env_var_checked("DISCORD_API_KEY")
+    api_token = utilities.get_env_var_checked("DISCORD_API_KEY")
     try:
         assert api_token != False
     except:
         exit(1)
-    game_id = app.get_env_var_checked(app.WEBDIP_ID_ENV_VAR_NAME)
+    game_id = utilites.get_env_var_checked(app.WEBDIP_ID_ENV_VAR_NAME)
     try:
         assert game_id != False
     except:
