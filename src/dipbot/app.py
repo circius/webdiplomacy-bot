@@ -70,15 +70,15 @@ description.
 
 
 def format_the_tardy_list(lop: List[Player]) -> str:
-    """ formats the list of players we're waiting for, façon HTDP
+    """ formats the list of players we're waiting for.
 """
-    if len(lop) == 0:
-        return ""
-    else:
-        player = lop[0]
-        rest = lop[1:]
-        return f"""  - {player['name']}, whose orders are {player['turn status'].lower()}
-{format_the_tardy_list(rest)}"""
+    return "\n".join([format_tardy_player(player) for player in lop])
+
+
+def format_tardy_player(player: Player) -> str:
+    """ formats a notice that a player's tardy.
+"""
+    return f"  - {player['name']}, whose orders are {player['turn status'].lower()}"
 
 
 def player_is_not_ready(player: Player) -> bool:
