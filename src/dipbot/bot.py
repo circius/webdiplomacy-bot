@@ -72,8 +72,8 @@ def main():
                 """I understand the following instructions:
  - `$status`
  - `$status!`
- - `$status?``
- - `$status!?``"""
+ - `$status?`
+ - `$status!?`"""
             )
 
         if message.content[0] != "$":
