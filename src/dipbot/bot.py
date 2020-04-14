@@ -72,7 +72,7 @@ def main():
             )
 
         elif message.content == ("$status?"):
-            status_message = app.ennounce_overall_game_state(dipgame, verbose=True)
+            status_message = app.announce_overall_game_state(dipgame, verbose=True)
 
         elif (message.content == ("$status?!")) or (message.content == ("status!?")):
             status_message = create_urgent_message(
