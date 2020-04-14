@@ -129,13 +129,13 @@ processing.
     return rows_without_civil_disorder_notices
 
 
-def soup_retreatsP(soup: BeautifulSoup) -> bool:
-    """parses a soup representing a webdiplomacy game page, and
-produces a boolean indicating whether or not the game is in a retreats
-phase.
+def soup_get_phase(soup: BeautifulSoup) -> Phase:
+    """parses a soup representing a webdiplomacy game page, and produces a
+Phase.
 
     """
-    return False
+    raw_gamephase = soup.find("span", class_="gamePhase").text
+    return raw_gamephase.lower()
 
 
 def soup_get_game_season(soup: BeautifulSoup) -> str:
