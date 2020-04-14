@@ -43,7 +43,7 @@ def main():
         assert api_token != False
     except:
         exit(1)
-    game_id = utilites.get_env_var_checked(app.WEBDIP_ID_ENV_VAR_NAME)
+    game_id = utilities.get_env_var_checked(app.WEBDIP_ID_ENV_VAR_NAME)
     try:
         assert game_id != False
     except:
