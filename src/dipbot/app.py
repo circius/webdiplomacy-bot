@@ -37,13 +37,6 @@ purpose of the game state.
     """
     season, year, phase = (state['season'], state['year'], state['phase'])
 
-
-    phase = state["phase"]
-
-    if verbose:
-        phase_announcement = phase_get_verbose_description(phase)
-    else:
-        phase_announcement = f"Phase: {phase}.\n"
     date_announcement = f"It is the **{phase} phase** of the {season} of {year}."
 
     waiting_for = dipgame_get_uncommitted_players(state)
@@ -51,7 +44,13 @@ purpose of the game state.
     awaiting_announcement = f"""We are awaiting the orders of:
 {format_the_tardy_list(waiting_for)}
 """
-    return date_announcement + phase_announcement + awaiting_announcement
+    announcement = [date_announcement, awaiting_announcement]
+
+    if verbose:
+        phase_long_description = f"{phase_get_verbose_description(phase)}"
+        announcement.append(phase_long_description)
+
+    return "\n".join(announcement)
 
 
 def phase_get_verbose_description(phase: Phase) -> str:
