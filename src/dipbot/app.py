@@ -35,15 +35,9 @@ state. If verbose is set to True, interpolates a string describing the
 purpose of the game state.
 
     """
+    season, year, phase = (state['season'], state['year'], state['phase'])
 
-    date_announcement = f"It is the {state['season']} of {state['year']}.\n"
-
-    phase = state["phase"]
-
-    if verbose:
-        phase_announcement = phase_get_verbose_description(phase)
-    else:
-        phase_announcement = f"Phase: {phase}.\n"
+    date_announcement = f"It is the **{phase} phase** of the {season} of {year}."
 
     waiting_for = dipgame_get_uncommitted_players(state)
 
