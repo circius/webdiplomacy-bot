@@ -9,23 +9,26 @@ from typing import List
 
 WEBDIP_ID_ENV_VAR_NAME = "WEBDIP_GAME_ID"
 
-MAIN_PHASE_LENGTH = utilities.get_env_var_checked( 
-    "MAIN_PHASE_LENGTH", ""
-)
+MAIN_PHASE_LENGTH = utilities.get_env_var_checked("MAIN_PHASE_LENGTH", "")
 
-AUXILIARY_PHASE_LENGTH = utilities.get_env_var_checked( 
-    "AUXILIARY_PHASE_LENGTH", ""
-)
+AUXILIARY_PHASE_LENGTH = utilities.get_env_var_checked("AUXILIARY_PHASE_LENGTH", "")
 
 GAME_PHASE_DESCRIPTIONS = {
-    "diplomacy": [f"""This is a normal phase of diplomacy and manoeuvre.""", MAIN_PHASE_LENGTH],
-    
-    "retreats": [f"""Only those powers who have been defeated and forced to retreat from some province have any orders to give; everyone else is waiting.""", AUXILIARY_PHASE_LENGTH],
-    
-    "builds": [f"""In this phase:
+    "diplomacy": [
+        f"""This is a normal phase of diplomacy and manoeuvre.""",
+        MAIN_PHASE_LENGTH,
+    ],
+    "retreats": [
+        f"""Only those powers who have been defeated and forced to retreat from some province have any orders to give; everyone else is waiting.""",
+        AUXILIARY_PHASE_LENGTH,
+    ],
+    "builds": [
+        f"""In this phase:
   - those who have gained supply centres will be able to build new armies in their core provinces;
   - those who have lost supply centres will have to destroy armies.
-Everyone else is waiting.""", AUXILIARY_PHASE_LENGTH],
+Everyone else is waiting.""",
+        AUXILIARY_PHASE_LENGTH,
+    ],
 }
 
 
@@ -35,7 +38,7 @@ state. If verbose is set to True, interpolates a string describing the
 purpose of the game state.
 
     """
-    season, year, phase = (state['season'], state['year'], state['phase'])
+    season, year, phase = (state["season"], state["year"], state["phase"])
 
     date_announcement = f"It is the **{phase} phase** of the {season} of {year}."
 
