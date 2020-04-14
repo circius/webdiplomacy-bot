@@ -20,6 +20,22 @@ produces the corresponding DipGame.
     return dipgame
 
 
+def create_urgent_message(normal_message: str, invoking_user: str = "") -> str:
+    """consumes a string representing a message to be posted to a discord
+channel and produces an urgent version by prepending a string
+mentioning @everyone. optionally consumes a string representing the
+name of the user that invoked this urgent message; if invoking_user is
+set, the urgent message will blame that user.
+
+    """
+    if invoking_user:
+        urgent_prefix = f"{invoking_user} asked me to tell @everyone that:"
+    else:
+        urgent_prefix = f"@everyone should know that"
+
+    return [urgent_prefix, normal_message].join("\n")
+
+
 def main():
 
     api_token = utilities.get_env_var_checked("DISCORD_API_KEY")
@@ -45,15 +61,26 @@ def main():
 
         dipgame = client_get_dipgame_checked(client, game_id)
 
+        invoking_user = message.author.name
+
         if message.content == ("$status"):
             status_message = app.announce_overall_game_state(dipgame)
+
+        elif message.content == ("$status!"):
+            status_message = create_urgent_message(
+                app.announce_overall_game_state(dipgame), invoking_user
+            )
+
+        elif message.content == ("$status?"):
+            status_message = app.ennounce_overall_game_state(dipgame, verbose=True)
+
+        elif (message.content == ("$status?!")) or (message.content == ("status!?")):
+            status_message = create_urgent_message(
+                app.announce_overall_game_state(dipgame, verbose=True), invoking_user
+            )
+
+        if status_message:
             await message.channel.send(status_message)
-
-        if message.content == ("$status!"):
-
-            urgent_message = f"{message.author.name} asked me to tell @everyone that:"
-            status_message = app.announce_overall_game_state(dipgame)
-            await message.channel.send(urgent_message + "\n" + status_message)
 
     client.run(api_token)
 
