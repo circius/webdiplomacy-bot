@@ -41,7 +41,7 @@ def message_is_help_commandP(message: discord.message) -> bool:
 interpreted as a request for help by dicebot, false otherwise.
 
     """
-    return mentions_includes_name(message.mentions, "dipbot")
+    return mentions_includes_name(message.mentions, "webdiplomacy")
 
 
 def main():
