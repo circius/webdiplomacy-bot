@@ -9,12 +9,12 @@ from typing import List
 
 WEBDIP_ID_ENV_VAR_NAME = "WEBDIP_GAME_ID"
 
-MAIN_PHASE_LENGTH = utilities.get_env_var_checked(
-    "MAIN_PHASE_LENGTH", "an unknown number of days"
+MAIN_PHASE_LENGTH = utilities.get_env_var_checked( 
+    "MAIN_PHASE_LENGTH", ""
 )
 
-AUXILIARY_PHASE_LENGTH = utilities.get_env_var_checked(
-    "AUXILIARY_PHASE_LENGTH", "an unknown number of hours"
+AUXILIARY_PHASE_LENGTH = utilities.get_env_var_checked( 
+    "AUXILIARY_PHASE_LENGTH", ""
 )
 
 GAME_PHASE_DESCRIPTIONS = {
@@ -60,6 +60,14 @@ description.
     """
 
     return GAME_PHASE_DESCRIPTIONS[phase]
+    description = GAME_PHASE_DESCRIPTIONS[phase][0]
+    allotted_time = GAME_PHASE_DESCRIPTIONS[phase][1]
+
+    if allotted_time != "":
+        time_description = f"We've agreed to submit turns within {allotted_time}."
+        return " ".join([description, time_description])
+
+    return description
 
 
 def format_the_tardy_list(lop: List[Player]) -> str:
