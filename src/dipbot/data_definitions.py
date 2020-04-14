@@ -6,7 +6,7 @@ from typing import NewType, Dict
         'name' -> str
         'year' -> int
         'season' -> str
-        'retreats?' -> bool
+        'phase' -> Phase
         'players' -> [list of Player]
 """
 
@@ -27,3 +27,11 @@ Player = NewType("Player", Dict)
 """
 
 Turn = NewType("Turn", str)
+
+""" A Phase is one of:
+ - "diplomacy"
+ - "retreats"
+ - "builds"
+"""
+
+Phase = NewType("Phase", str)
