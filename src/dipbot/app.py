@@ -37,6 +37,13 @@ purpose of the game state.
     """
     season, year, phase = (state['season'], state['year'], state['phase'])
 
+
+    phase = state["phase"]
+
+    if verbose:
+        phase_announcement = phase_get_verbose_description(phase)
+    else:
+        phase_announcement = f"Phase: {phase}.\n"
     date_announcement = f"It is the **{phase} phase** of the {season} of {year}."
 
     waiting_for = dipgame_get_uncommitted_players(state)

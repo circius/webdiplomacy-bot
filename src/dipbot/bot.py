@@ -33,7 +33,7 @@ set, the urgent message will blame that user.
     else:
         urgent_prefix = f"@everyone should know that"
 
-    return [urgent_prefix, normal_message].join("\n")
+    return "\n".join([urgent_prefix, normal_message])
 
 
 def main():
