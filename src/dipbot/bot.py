@@ -20,12 +20,14 @@ set, the urgent message will blame that user.
     return "\n".join([urgent_prefix, normal_message])
 
 
-def message_is_help_commandP(message: discord.message) -> bool:
-    """consumes a dusord.py message and produces true if it should be
-interpreted as a request for help by dicebot, false otherwise.
+def message_is_help_commandP(message: discord.message, client: discord.Client) -> bool:
+    """consumes a dusord.py message and a discord Client and produces true
+if it should be interpreted as a request for help by the client, false
+otherwise.
 
     """
-    return mentions_includes_name(message.mentions, "webdiplomacy")
+    return mentions_includes_name(message.mentions, client.user)
+
 
 def mentions_includes_name(mentions: list, name: str) -> bool:
     """consumes a list of mentions from a discord.py message and produces
