@@ -4,22 +4,6 @@ from dipbot import app, scraper, utilities
 from dipbot.data_definitions import DipGame
 
 
-def client_get_dipgame_checked(client: discord.Client, game_id: int) -> DipGame:
-    """consumes a discord.py Client and a webdiplomacy game_id and
-produces the corresponding DipGame.
-
-    """
-    dipgame = scraper.get_dipgame_checked(game_id)
-    try:
-        assert dipgame != False
-    except:
-        print(
-            "Could not get status of game with id {game_id}. Are you sure it's valid? Exiting..."
-        ).format(client)
-        exit(1)
-    return dipgame
-
-
 def create_urgent_message(normal_message: str, invoking_user: str = "") -> str:
     """consumes a string representing a message to be posted to a discord
 channel and produces an urgent version by prepending a string
