@@ -37,6 +37,7 @@ otherwise.
     """
     return any(map(lambda x: x.name == name, mentions))
 
+
 def main():
 
     api_token = utilities.get_env_var_checked("DISCORD_API_KEY")
@@ -60,7 +61,7 @@ def main():
         if message.author == client.user:
             return
 
-        if message_is_help_commandP(message):
+        if message_is_help_commandP(message, client):
             await message.channel.send(
                 """I understand the following instructions:
  - `$status`
