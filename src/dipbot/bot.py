@@ -73,7 +73,11 @@ def main():
         if message.content[0] != "$":
             return
 
-        dipgame = client_get_dipgame_checked(client, game_id)
+        dipgame = scraper.get_dipgame_checked(game_id)
+
+        if dipgame == False:
+            await message.channel.send(f"Could not find game at {game_id}.")
+            return
 
         invoking_user = message.author.name
 
