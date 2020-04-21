@@ -51,12 +51,15 @@ def test_message_is_help_commandP(client):
         assert bot.message_is_help_commandP(message, client) == False
 
 
-# def test_client_fails_gracefully_when_fails_to_get_game(monkeypatch):
-#     def mock_get_dipgame_checked_returns_False(*args):
-#         return False
+def test_gets_env_variable_or_exits(monkeypatch):
+    monkeypatch.setenv("DISCORD_API_KEY", "nonsense")
+    value = bot.get_env_var_or_exit("DISCORD_API_KEY")
+    assert value == "nonsense"
 
-#     monkeypatch.setattr(scraper, "get_dipgame_checked", mock_get_dipgame_checked_returns_False)
-
-#     result = bot.client_get_dipgame_checked(MockClient("@dipbot"), 1)
-
-#     assert
+    nokey = "NO_SUCH_KEY_WILL_EVER_BE_SET"
+    monkeypatch.delenv(nokey, raising=False)
+    
+    # code for testing exits from https://medium.com/python-pandemonium/testing-sys-exit-with-pytest-10c6e5f7726f
+    with pytest.raises(SystemExit) as pytest_wrapped_e:
+        bot.get_env_var_or_exit(nokey)
+    assert pytest_wrapped_e.type == SystemExit
