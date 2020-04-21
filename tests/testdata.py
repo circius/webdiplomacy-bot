@@ -56,5 +56,15 @@ pop_the_bee_builds_DipGame = {
     "phase": "builds",
     "players": pop_the_bee_players,
     "started": 1600000000,
-    "deadline": 160001000,
+    "deadline": 1600010000,
+}
+
+pop_the_bee_finished_DipGame = {
+    "name": "Pop the Bee",
+    "year": 1910,
+    "season": "Autumn",
+    "phase": "finished",
+    "players": pop_the_bee_players,
+    "started": None,
+    "deadline": None,
 }
