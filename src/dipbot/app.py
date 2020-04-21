@@ -50,7 +50,7 @@ purpose of the game state.
 
         last_moment = dipgame_get_last_moment(state)
 
-        time_left_announcement = f"""There are **{time_left}** days until the deadline, which is {last_moment}.
+        time_left_announcement = f"""There are **{time_left}** days until the deadline, which is at {last_moment} UTC.
 """
         announcement.append(time_left_announcement)
 
@@ -71,7 +71,7 @@ date of the end of the turn.
         return None
     else:
         moment = datetime.datetime.fromtimestamp(
-            state["deadline"], pytz.timezone("GMT")
+            state["deadline"], pytz.timezone("UTC")
         )
         return moment.strftime("%m/%d/%Y, %H:%M:%S")
 
