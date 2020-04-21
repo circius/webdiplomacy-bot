@@ -32,7 +32,12 @@ pop_the_bee_DipGame = {
     "season": "Spring",
     "phase": "diplomacy",
     "players": pop_the_bee_players,
+    "started": 1585781624,
+    "deadline": 1586040705,
 }
+
+# these are arbitrarily adjusted dipgames which do not correspond to
+# any test html file.
 
 pop_the_bee_retreats_DipGame = {
     "name": "Pop the Bee",
@@ -40,6 +45,8 @@ pop_the_bee_retreats_DipGame = {
     "season": "Autumn",
     "phase": "retreats",
     "players": pop_the_bee_players,
+    "started": 1586040706,
+    "deadline": 1599999999,
 }
 
 pop_the_bee_builds_DipGame = {
@@ -48,4 +55,6 @@ pop_the_bee_builds_DipGame = {
     "season": "Autumn",
     "phase": "builds",
     "players": pop_the_bee_players,
+    "started": 1600000000,
+    "deadline": 160001000,
 }

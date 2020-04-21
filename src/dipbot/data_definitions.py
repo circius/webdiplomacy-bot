@@ -8,6 +8,8 @@ from typing import NewType, Dict
         'season' -> str
         'phase' -> Phase
         'players' -> [list of Player]
+        'started' -> Union[int, None]
+        'deadline' -> Union[int, None] 
 """
 
 DipGame = NewType("DipGame", Dict)

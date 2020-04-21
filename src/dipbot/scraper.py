@@ -63,7 +63,33 @@ produces a DipGame representing the game state.
         "season": soup_get_game_season(soup),
         "phase": soup_get_phase(soup),
         "players": soup_get_players(soup),
+        "started": soup_get_started_epoch(soup),
+        "deadline": soup_get_deadline_epoch(soup),
     }
+
+
+def soup_get_deadline_epoch(soup: BeautifulSoup) -> Union[int, None]:
+    """parses a soup representing a webdiplomacy game page, and produces
+the epoch of the deadline, or None if the game is over.
+
+    """
+    timeremaining_span_or_none = soup.find("span", class_="timeremaining")
+    if timeremaining_span_or_none == None:
+        return None
+    else:
+        return int(timeremaining_span_or_none["unixtime"])
+
+
+def soup_get_started_epoch(soup: BeautifulSoup) -> Union[int, None]:
+    """parses a soup representing a webdiplomacy game page, and produces
+the epoch of the beginning of the phase, or None if the game is over.
+
+    """
+    timeremaining_span_or_none = soup.find("span", class_="timeremaining")
+    if timeremaining_span_or_none == None:
+        return None
+    else:
+        return int(timeremaining_span_or_none["unixtimefrom"])
 
 
 def soup_get_players(soup: BeautifulSoup) -> List[Player]:
