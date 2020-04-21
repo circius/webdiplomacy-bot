@@ -14,16 +14,12 @@ WEBDIP_ID_ENV_VAR_NAME = "WEBDIP_GAME_ID"
 AUXILIARY_PHASE_LENGTH = utilities.get_env_var_checked("AUXILIARY_PHASE_LENGTH", "")
 
 GAME_PHASE_DESCRIPTIONS = {
-    "diplomacy": [f"""This is a normal phase of diplomacy and manoeuvre."""],
-    "retreats": [
-        f"""Only those powers who have been defeated and forced to retreat from some province have any orders to give; everyone else is waiting."""
-    ],
-    "builds": [
-        f"""In this phase:
+    "diplomacy": f"""This is a normal phase of diplomacy and manoeuvre.""",
+    "retreats": f"""Only those powers who have been defeated and forced to retreat from some province have any orders to give; everyone else is waiting.""",
+    "builds": f"""In this phase:
   - those who have gained supply centres will be able to build new armies in their core provinces;
   - those who have lost supply centres will have to destroy armies.
 Everyone else is waiting.""",
-    ],
 }
 
 
