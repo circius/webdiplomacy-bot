@@ -34,6 +34,7 @@ Turn = NewType("Turn", str)
  - "diplomacy"
  - "retreats"
  - "builds"
+ - "finished"
 """
 
 Phase = NewType("Phase", str)
