@@ -38,18 +38,26 @@ otherwise.
     return any(map(lambda x: x.name == name, mentions))
 
 
+def get_env_var_or_exit(env_var: str) -> str:
+    """consumes a string corresponding to an environment variable. if the
+environment variable is set, produces it as a string. if it's not,
+sends the signal exit(1).
+
+    """
+    value = utilities.get_env_var_checked(env_var)
+    try:
+        assert value != False
+    except:
+        exit(1)
+    return value
+
+
 def main():
 
-    api_token = utilities.get_env_var_checked("DISCORD_API_KEY")
-    try:
-        assert api_token != False
-    except:
-        exit(1)
-    game_id = utilities.get_env_var_checked(app.WEBDIP_ID_ENV_VAR_NAME)
-    try:
-        assert game_id != False
-    except:
-        exit(1)
+    api_token = get_env_var_or_exit("DISCORD_API_KEY")
+
+    game_id = get_env_var_or_exit(app.WEBDIP_ID_ENV_VAR_NAME)
+
     client = discord.Client()
 
     @client.event
