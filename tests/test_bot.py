@@ -58,7 +58,7 @@ def test_gets_env_variable_or_exits(monkeypatch):
 
     nokey = "NO_SUCH_KEY_WILL_EVER_BE_SET"
     monkeypatch.delenv(nokey, raising=False)
-    
+
     # code for testing exits from https://medium.com/python-pandemonium/testing-sys-exit-with-pytest-10c6e5f7726f
     with pytest.raises(SystemExit) as pytest_wrapped_e:
         bot.get_env_var_or_exit(nokey)
