@@ -53,7 +53,7 @@ def test_can_get_an_accurate_list_of_uncommitted_players():
     assert players[0]["name"] == "MichiganMan"
 
 
-def test_produces_verbose_descriptions_on_request():
+def test_verbose_descriptions_are_longer():
     announcement = app.announce_overall_game_state(testdata.pop_the_bee_DipGame)
     verbose_announcement = app.announce_overall_game_state(
         testdata.pop_the_bee_DipGame, True
