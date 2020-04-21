@@ -5,7 +5,8 @@ of DipGames.
 """
 from dipbot.data_definitions import DipGame, Player, Phase
 from dipbot import utilities
-from typing import List
+from typing import List, Union
+import datetime
 
 WEBDIP_ID_ENV_VAR_NAME = "WEBDIP_GAME_ID"
 
@@ -47,13 +48,51 @@ purpose of the game state.
     awaiting_announcement = f"""We are awaiting the orders of:
 {format_the_tardy_list(waiting_for)}
 """
+
     announcement = [date_announcement, awaiting_announcement]
+
+    if phase != "finished":
+        time_left = dipgame_get_time_left_as_days(state)
+
+        last_moment = dipgame_get_last_moment(state)
+
+        time_left_announcement = f"""There are **{time_left}** days until the deadline, which is {last_moment}.
+"""
+        announcement.append(time_left_announcement)
 
     if verbose:
         phase_long_description = f"{phase_get_verbose_description(phase)}"
         announcement.append(phase_long_description)
 
     return "\n".join(announcement)
+
+
+def dipgame_get_last_moment(state: DipGame) -> Union[str, None]:
+    """consumes a DipGame and produces a string representing the time and
+date of the end of the turn.
+
+    """
+    posix_or_none = state["deadline"]
+    if posix_or_none == None:
+        return None
+    else:
+        moment = datetime.datetime.fromtimestamp(state["deadline"])
+        return moment.strftime("%m/%d/%Y, %H:%M:%S")
+
+
+def dipgame_get_time_left_as_days(state: DipGame) -> Union[float, None]:
+    """Consumes a DipGame and produces an integer representing the time
+before the deadline denominated by days, rounded to one decimal place,
+or None if either `deadline` or `started` are None.
+
+    """
+    [deadline, started] = [state["deadline"], state["started"]]
+    if deadline == None or started == None:
+        return None
+    else:
+        time_left_as_seconds = deadline - started
+        time_left_as_days = time_left_as_seconds / 86400
+        return round(time_left_as_days, 1)
 
 
 def phase_get_verbose_description(phase: Phase) -> str:
