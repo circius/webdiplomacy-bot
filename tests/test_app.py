@@ -23,7 +23,7 @@ def test_can_accurately_report_overall_game_state():
     assert "retreats" in announcement_retreats
     assert "161.6" in announcement_retreats
     assert "09/13/2020" in announcement_retreats
-    assert "13:26:39" in announcement_retreats
+    assert "12:26:39" in announcement_retreats
 
     announcement_builds = app.announce_overall_game_state(
         testdata.pop_the_bee_builds_DipGame
@@ -34,7 +34,7 @@ def test_can_accurately_report_overall_game_state():
     assert "builds" in announcement_builds
     assert "0.1" in announcement_builds
     assert "09/13/2020" in announcement_builds
-    assert "16:13:20" in announcement_builds
+    assert "15:13:20" in announcement_builds
 
     announcement_finished = app.announce_overall_game_state(
         testdata.pop_the_bee_finished_DipGame
