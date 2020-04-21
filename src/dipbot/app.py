@@ -7,6 +7,7 @@ from dipbot.data_definitions import DipGame, Player, Phase
 from dipbot import utilities
 from typing import List, Union
 import datetime
+import pytz
 
 WEBDIP_ID_ENV_VAR_NAME = "WEBDIP_GAME_ID"
 
@@ -69,7 +70,9 @@ date of the end of the turn.
     if posix_or_none == None:
         return None
     else:
-        moment = datetime.datetime.fromtimestamp(state["deadline"])
+        moment = datetime.datetime.fromtimestamp(
+            state["deadline"], pytz.timezone("GMT")
+        )
         return moment.strftime("%m/%d/%Y, %H:%M:%S")
 
 

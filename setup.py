@@ -34,8 +34,9 @@ setuptools.setup(
         "discord.py",
         "requests",
         "bs4",
+        "pytz",
         "lxml",
-        "Click"
+        "Click",
     ],
     entry_points="""
     [console_scripts]

@@ -12,7 +12,7 @@ def test_can_accurately_report_overall_game_state():
     assert "diplomacy" in announcement
     assert "3.0" in announcement
     assert "04/04/20" in announcement
-    assert "23:51:45" in announcement
+    assert "22:51:45" in announcement
 
     announcement_retreats = app.announce_overall_game_state(
         testdata.pop_the_bee_retreats_DipGame
@@ -94,7 +94,7 @@ def test_gets_time_left_is_none_when_game_is_finished():
 
 def test_gets_last_moment_correctly():
     pop_the_bee_last_moment = app.dipgame_get_last_moment(testdata.pop_the_bee_DipGame)
-    assert "23:51:45" in pop_the_bee_last_moment
+    assert "22:51:45" in pop_the_bee_last_moment
     assert "04/04/2020" in pop_the_bee_last_moment
 
 
