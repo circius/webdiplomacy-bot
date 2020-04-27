@@ -25,3 +25,16 @@ default has been set, in which case it returns that instead.
             print(f"{varname} unset! terminating...")
             return False
     return value
+
+def get_env_var_or_exit(env_var: str) -> str:
+    """consumes a string corresponding to an environment variable. if the
+environment variable is set, produces it as a string. if it's not,
+sends the signal exit(1).
+
+    """
+    value = get_env_var_checked(env_var)
+    try:
+        assert value != False
+    except:
+        exit(1)
+    return value
