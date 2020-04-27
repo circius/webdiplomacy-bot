@@ -18,6 +18,7 @@ def test_get_env_var_checked_can_get_arbitrary_env_var(monkeypatch):
     key = utilities.get_env_var_checked("DISCORD_API_KEY")
     assert key == "nonsense"
 
+
 def test_gets_env_variable_or_exits(monkeypatch):
     monkeypatch.setenv("DISCORD_API_KEY", "nonsense")
     value = utilities.get_env_var_or_exit("DISCORD_API_KEY")

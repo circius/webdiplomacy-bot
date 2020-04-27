@@ -26,6 +26,7 @@ default has been set, in which case it returns that instead.
             return False
     return value
 
+
 def get_env_var_or_exit(env_var: str) -> str:
     """consumes a string corresponding to an environment variable. if the
 environment variable is set, produces it as a string. if it's not,
