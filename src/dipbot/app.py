@@ -22,6 +22,7 @@ GAME_PHASE_DESCRIPTIONS = {
 Everyone else is waiting.""",
 }
 
+GAME_ID = utilities.get_env_var_or_exit(WEBDIP_ID_ENV_VAR_NAME)
 
 def announce_overall_game_state(state: DipGame, verbose: bool = False) -> str:
     """Consumes a DipGame and produces a string summarising the game

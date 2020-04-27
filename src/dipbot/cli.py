@@ -16,12 +16,7 @@ def cli():
 @cli.command()
 @click.option("-v", "--verbose", is_flag=True, help="prints verbose output")
 def report(verbose):
-    game_id = utilities.get_env_var_checked(app.WEBDIP_ID_ENV_VAR_NAME)
-    try:
-        assert game_id != False
-    except:
-        exit(1)
-    dipgame = scraper.get_dipgame_checked(game_id)
+    dipgame = scraper.get_dipgame_checked(app.GAME_ID)
     try:
         assert dipgame != False
     except:
