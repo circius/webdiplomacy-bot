@@ -4,63 +4,43 @@ from dipbot import scraper, app, bot_utilities
 class Status(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
-        self.game_id = GAME_ID
+        self.game_id = app.GAME_ID
 
     @commands.command()
     async def status(self, ctx):
+        """instructs me to report on the status of my webdip game.
+
+        """
         dipgame = scraper.get_dipgame_checked(self.game_id)
         status_message = app.announce_overall_game_state(dipgame)
         await ctx.message.channel.send(status_message)
-        
-    @commands.Cog.listener()
-    async def on_message(self, message):
-        if message.author == self.bot.user:
-            return
 
-        if bot_utilities.message_is_help_commandP(message, self.bot):
-            await message.channel.send(
-                """I understand the following instructions:
-                - `$status`
-                - `$status!`
-                - `$status?`
-                - `$status!?`"""
+    @commands.command(name="status!")
+    async def status_shouted(self, ctx):
+        """same as `$status`, but mentioning @everyone
+"""
+        dipgame = scraper.get_dipgame_checked(self.game_id)
+        status_message = bot_utilities.create_urgent_message(
+                app.announce_overall_game_state(dipgame), ctx.message.author.name
             )
+        await ctx.message.channel.send(status_message)
 
-        if message.content[0] != "$":
-            return
+    @commands.command(name="status?")
+    async def status_verbose(self, ctx):
+        """same as `$status`, but with additional information about the game
+state. useful for beginners.
 
-        dipgame = scraper.get_dipgame_checked(app.GAME_ID)
+        """
+        dipgame = scraper.get_dipgame_checked(self.game_id)
+        status_message = app.announce_overall_game_state(dipgame, verbose=True)
+        await ctx.message.channel.send(status_message)
 
-        if dipgame == False:
-            await message.channel.send(f"Could not find game at {app.GAME_ID}.")
-            return
-
-        invoking_user = message.author.name
-
-        request = message.content
-
-        print(f"request: {request}")
-
-        status_message = False
-
-        if request == "$status":
-            pass
-
-        if request == "$status!":
-            status_message = bot_utilities.create_urgent_message(
-                app.announce_overall_game_state(dipgame), invoking_user
-            )
-
-        if request == "$status?":
-            status_message = app.announce_overall_game_state(dipgame, verbose=True)
-
-        if request == "$status!?" or request == "$status?!":
-            status_message = bot_utilities.create_urgent_message(
-                app.announce_overall_game_state(dipgame, verbose=True), invoking_user
-            )
-
-        if status_message:
-            print("served status")
-            await message.channel.send(status_message)
-        else:
-            print(f"did not understand message `{request}`")
+    @commands.command(name="status?!", aliases=["status!?"])
+    async def status_verbose_shouted(self, ctx):
+        """same as `$status?`, but mentioning @everyone
+"""
+        dipgame = scraper.get_dipgame_checked(self.game_id)
+        status_message = bot_utilities.create_urgent_message(
+            app.announce_overall_game_state(dipgame, verbose=True), ctx.message.author.name
+        )
+        await ctx.message.channel.send(status_message)
