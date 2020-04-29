@@ -11,7 +11,8 @@ def test_running_report_with_unset_game_id_exits_gracefully(monkeypatch):
     runner = CliRunner()
     result = runner.invoke(cli.cli, ["report"])
     assert result.exit_code == 1
-    assert "unset! terminating..." in result.output
+    assert "unset!" in result.output
+    assert "terminating..." in result.output
 
 
 def test_running_report_with_invalid_game_id_exits_gracefully(monkeypatch):
