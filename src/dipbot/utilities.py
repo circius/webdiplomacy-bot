@@ -22,7 +22,7 @@ default has been set, in which case it returns that instead.
         if default != False:
             return default
         else:
-            print(f"{varname} unset! terminating...")
+            print(f"{varname} unset!")
             return False
     return value
 
@@ -36,6 +36,7 @@ sends the signal exit(1).
     value = get_env_var_checked(env_var)
     try:
         assert value != False
-    except:
+    except AssertionError:
+        print("terminating...")
         exit(1)
     return value
