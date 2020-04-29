@@ -16,7 +16,7 @@ def cli():
 @cli.command()
 @click.option("-v", "--verbose", is_flag=True, help="prints verbose output")
 def report(verbose):
-    dipgame = scraper.get_dipgame_checked(app.GAME_ID)
+    dipgame = scraper.get_dipgame_checked(app.get_game_id())
     try:
         assert dipgame != False
     except:
