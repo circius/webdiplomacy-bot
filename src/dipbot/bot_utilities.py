@@ -24,7 +24,7 @@ pleading message, false otherwise.
 
     """
     pleading_lexemes = ["help", "please", "?", "how"]
-    return any(map(lambda x: x in message.content, pleading_lexemes))
+    return any(map(lambda x: x in message.content.lower(), pleading_lexemes))
 
 
 def message_is_pleading_with_clientuserP(
