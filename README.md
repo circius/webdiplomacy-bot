@@ -1,41 +1,58 @@
 [![Build Status](https://travis-ci.org/circius/webdiplomacy-bot.svg?branch=master)](https://travis-ci.org/circius/webdiplomacy-bot)
+[![Coverage Status](https://coveralls.io/repos/github/circius/webdiplomacy-bot/badge.svg?branch=master)](https://coveralls.io/github/circius/webdiplomacy-bot?branch=master)
 
 ## summary
 
-This is a discord bot which scrapes the current status of games at
+This is a discord bot which scrapes the current status of a game at
 webdiplomacy and announces that information on discord.
 
 It also incorporates a very rudimentary cli tool which does the same
 thing on the host.
 
-## functionality
+*Note that at the moment dipbot can only handle a single game*,
+although the CLI functionality can fairly straightforwardly be
+adjusted to parse different games (there's guidance on this below.)
 
-When running as a discord bot, dipbot will produce output when it sees
-the following messages:
+## daemon functionality
 
- - `$status`, which produces a concise statement of the webdiplomacy game state,
- - `$status!`, which produces the output of `$status`, but also mentions @everyone,
- - `$status?`, which produces the output of `$status`, along with a
-   verbose description of the game phase, and
- - `$status?!`, or `$status!?`, which produces the output of
-   `$status?` but also mentions @everyone.
+The daemon, which is run as `dipbot daemon`, spawns a discord bot
+based on discord.py. It depends on a couple of environment variables
+described below.
 
-A `$status` request produces output in the following format:
+Here is the bot's help dialogue, which describes the commands it
+supports:
 
 ``` shell
-"It is the [season] of [year].
-[phase].
-We are awaiting the order of:
-[list of non-ready players with their order statuses]"
+Status:
+  status   instructs me to report on the status of my webdip game.
+  status!  same as `$status`, but mentioning @everyone
+  status?  same as `$status`, but with additional information about the game
+  status?! same as `$status?`, but mentioning @everyone
+​No Category:
+  help     Shows this message
+
+Type $help command for more info on a command.
+You can also type $help category for more info on a category.
 ```
+
+A `$status` request produces output in the
+following format:
+
+``` shell
+"It is the [game-phase] of the [season] of [year].
+
+We are awaiting the orders of:
+[list of non-ready players with their order statuses]
+There are [N] days until the deadline, which is at [date]"
+```
+
 run as `dipbot report`, dipbot will produce the output of `$status`.
 
 ## configuration
 
-dipbot depends on two environment variables which must be correctly
-set for it to function. There are also two environment variables which
-it is highly advisable to set, since the bot is able to be more
-informative in its verbose mode if they are.
+both `dipbot daemon` and `dipbot report` receive their configuration
+from environment variables. Both need to know which game to look at;
+`dipbot daemon` also needs to know its discord API key.
 
 ### compulsory environment variables
 
@@ -52,21 +69,24 @@ a bot account as described
 to set the environment variable DISCORD_API_KEY to the value of the
 bot's token.
 
-### optional environment variables
+these [environment
+variables](https://www.gnu.org/software/bash/manual/html_node/Environment.html)
+can be set for a single session like this:
 
-Dipbot is able to provide verbose output in order to give new players
-more support in understanding the significance of the various
-phases. This verbose output varies according to the phase, and
-includes an announcement of the amount of time the group has decided
-to allow for each turn. For instance, a group might want to run a game
-in which 7 days are allowed for the diplomacy phases, but the builds
-and retreats phases should be completed within 2 days each.
+``` shell
+$ export WEBDIP_GAME_ID=[game_id]
+$ export DISCORD_API_KEY=[api_key]
+```
+that will let dipbot work in the current shell; to avoid having to run these commands, you can put the variable assignments in the config file for your shell (~/.bashrc, ~/.zshrc or whatever).
 
-In order to support this kind of adjustment of the verbose messages,
-dipbot supports two further environment variables: MAIN_PHASE_LENGTH
-(representing diplomacy phases) and AUXILIARY_PHASE_LENGTH
-(representing builds and retreats.) They should be set to an english
-phrase representing duration, for instance "7 days" or "24 hours".
+### handling multiple games
+
+Both `dipbot daemon` and `dipbot report` will get whatever game has
+the id specified by WEBDIP_GAME_ID. You could therefore make little
+wrapper scripts for dipbot report and get reports on as many games as
+you liked. In future an option to specify the game id on the
+commandline will be added to eliminate this minor inconvenience.
+
 
 ## installation
 
@@ -96,4 +116,4 @@ which parses the status of the game and reports it to the shell before quitting,
 $ dipbot daemon
 ```
 
-which attempts to initialize a discord bot corresponding to the token stored in DISCORD_API_KEY, and which will respond with a report when addressed on discord with the messages "$status" and "$status!".
+which attempts to initialize a discord bot corresponding to the token stored in DISCORD_API_KEY.
